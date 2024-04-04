@@ -12,7 +12,6 @@ class ProblemRepository {
                 testCases: (problemData.testCases) ? problemData.testCases : [],
                 editorial: (problemData.editorial) ? problemData.editorial : ""
             });
-
             return problem;
         } catch (error) {
             console.log(error);
@@ -59,7 +58,7 @@ class ProblemRepository {
     async updateProblem(id, updatedData) {
         try {
             const problemToUpdate = await Problem.findByIdAndUpdate(id, {
-                ...(updatedData.title && {title : updatedData.title}),
+                ...(updatedData.title && {title: updatedData.title}),
                 ...(updatedData.description && {description: updatedData.description}),
                 ...(updatedData.difficulty && {difficulty: updatedData.difficulty}),
                 ...(updatedData.textCases && {testCases: updatedData.testCases}),
