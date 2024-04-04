@@ -28,6 +28,14 @@ class ProblemService {
         return deletedProblemId;
     }
 
+    async updateProblem(id, updatedData) {
+        if(updatedData.description) {
+            updatedData.description = markdownSanitizer(updatedData.description);
+        }
+        const updatedProblem = await this.problemRepository.updateProblem(id, updatedData);
+        return updatedProblem;
+    }
+
 }
 
 module.exports = ProblemService;
