@@ -25,15 +25,21 @@ async function addProblem(req, res, next) {
 
 function getProblem(req, res, next) {
     try {
-        throw new NotImplemented('addProblem');
+        throw new NotImplemented('getProblem');
     } catch (error) {
         next(error);
     }
 }
 
-function getProblems(req, res, next) {
+async function getProblems(req, res, next) {
     try {
-        throw new NotImplemented('addProblem');
+        const response = await problemService.getAllProblems();
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: 'Successfully fetched all the problems',
+            error: {},
+            data: response
+        });
     } catch (error) {
         next(error);
     }
