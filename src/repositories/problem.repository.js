@@ -57,13 +57,7 @@ class ProblemRepository {
 
     async updateProblem(id, updatedData) {
         try {
-            const updatedProblem = await Problem.findByIdAndUpdate(id, {
-                ...(updatedData.title && {title: updatedData.title}),
-                ...(updatedData.description && {description: updatedData.description}),
-                ...(updatedData.difficulty && {difficulty: updatedData.difficulty}),
-                ...(updatedData.textCases && {testCases: updatedData.testCases}),
-                ...(updatedData.editorial && {editorial: updatedData.editorial})
-            }, {new: true});
+            const updatedProblem = await Problem.findByIdAndUpdate(id, updatedData, {new: true});
             if(!updatedProblem) {
                 throw new NotFound("Update Problem", id);
             }
