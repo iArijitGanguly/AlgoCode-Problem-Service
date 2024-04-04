@@ -45,9 +45,8 @@ class ProblemRepository {
 
     async deleteProblem(id) {
         try {
-            const deleteProbem = await Problem.deleteOne({_id: id});
-            console.log(deleteProbem);
-            if(deleteProbem.deletedCount == 0) {
+            const deleteProbem = await Problem.findByIdAndDelete(id);
+            if(!deleteProbem) {
                 throw new NotFound("Delete Problem", id);
             }
             return id;
