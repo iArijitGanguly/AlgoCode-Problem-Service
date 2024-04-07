@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const { PORT } = require('./config/server.config');
 const apiRouter = require('./routes');
 const errorHandler = require('./utils/errorHandler');
+const connectToDb = require('./config/db.config');
 
 const app = express();
 
@@ -21,6 +22,8 @@ app.get('/ping', (req, res) => {
 //last middleware if any error comes
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`Server started at PORT: ${PORT}`);
+    await connectToDb();
+    console.log("Db connection is successfull");
 });
