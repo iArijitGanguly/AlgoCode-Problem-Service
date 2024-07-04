@@ -1,5 +1,6 @@
 const { Problem } = require('../models');
 const NotFound = require('../errors/notFound.error');
+const logger = require('../config/logger.config');
 
 class ProblemRepository {
 
@@ -62,7 +63,7 @@ class ProblemRepository {
             }
             return updatedProblem;
         } catch (error) {
-            logger.error(`${err.message}`);
+            logger.error(`${error.message}`);
             throw error;
         }
     }
