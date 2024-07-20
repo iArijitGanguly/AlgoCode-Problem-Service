@@ -34,13 +34,12 @@ const problemSchema = new Schema({
                 enum: ['CPP', 'JAVA', 'PYTHON'],
                 required: true
             },
-            strartSnippet: {
+            startSnippet: {
                 type: String,
                 required: true
             },
             endSnippet: {
                 type: String,
-                required: true
             },
             userSnippet: {
                 type: String,
